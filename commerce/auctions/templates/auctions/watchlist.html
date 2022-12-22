@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %} 
+    {% if length == 0 %}
+        <div class="alert alert-secondary" role="alert">
+            <h6>Empty watchlist!</h6>
+        </div>
+    {% endif %}
+    {% for i in WL_items %}
+        <div class="wl-item">
+            <img src="{{ i.image.url }}" class="img-fluid" alt="{{ i.title }}">
+            <div class="wl-child">
+                <a href="{% url 'listing' i.id %}" class="title"><h6>{{ i.title }}</h6></a>
+                <form action="{% url 'listing' i.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="WatchList" name="form">
+                    <input type="submit" value="remove item" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if not user.is_authenticated %}
+        <h6>{{ message2 }}</h6>
+    {% endif %}
+    <h6>{{ message1 }}</h6>
+    <p>{{ do }}</p>
+    <div class="listing-in">
+        <img src="{{ listing.image.url }}" class="img-fluid" alt="#">
+        <div class="listing-in-2">
+            <h1>{{ listing.title }}</h1>
+            <h2>{{ bid }}$</h2>
+            <form action="{% url 'listing' listing.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="WatchList" name="form">
+                <input type="submit" value="WatchList" class="btn btn-primary">
+            </form>
+            <p>{{ message }}</p>
+            
+            <form action="{% url 'listing' listing.id %}" method="post">
+                {% csrf_token %}
+                <input type="number" placeholder="Bid..." name="bid" class="form-control">
+                <input type="hidden" value="{{ user.id }}" name="user">
+                <input type="hidden" value="add-bid-form" name="form">
+                <input type="submit" value="bid" class="btn btn-primary">
+            </form>
+            
+            <p class="description">{{ listing.description }}</p>
+        </div>
+    </div>
+    <div>
+        <h3>Details:</h3>
+        <p class="details">Listed by: <strong class="user">{{ listing.user }}</strong></p>
+        <p class="details">Category: <strong class="category">{{ listing.category }}</strong></p>
+    </div>
+
+    <div class="comments">
+    {% for i in comments %}
+        <div class="comment">
+            <h6>{{ i.user_id }}</h6>
+            <p>{{ i.comment }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    <form action="{% url 'listing' listing.id %}" method="post" class="add-comnt">
+        {% csrf_token %}
+        {{ comment_form }}
+        <input type="hidden" value="comment-form" name="form">
+        <input type="submit" value="add comment" class="btn btn-primary">
+    </form>
+    
+{% endblock %}

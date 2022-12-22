@@ -1,0 +1,68 @@
+textarea {
+    min-height: 400px;
+}
+
+.mailbox-name{
+    font-size: 25px;
+}
+
+h6{
+    font-size: 25px;
+    font-family: monospace;
+}
+
+.inline-item{
+    display: inline;
+    margin: auto 5px;
+}
+
+.email-div{
+    margin: 10px auto 10px 10px;
+}
+
+.email-buttons{
+    padding: 5px 20px;
+    background-color: black;
+    color: white;
+    border: 1px black solid;
+    border-radius: 3px;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+
+.email-buttons:hover{
+    background-color: white;
+    color: black;
+}
+
+.div-1{
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px
+}
+
+.h-styles{
+    color:rgb(34, 32, 32);
+    font-family: monospace;
+}
+
+.subject{
+    color: rgb(0 0 0);
+    margin-left: 15px;
+}
+
+#body{
+    margin: 5px 2%;
+}
+
+.timestamp{
+    color: grey;
+    font-size: 13px;
+    margin-left: 70%;
+}
+
+.d-time{
+    margin-left: 5px;
+}

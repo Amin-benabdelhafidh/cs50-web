@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'auctions/styles.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="navbar">
+        <div>
+            <h1 id="title"><span id="lll">My</span> Auctions</h1>
+                <div>
+                    {% if user.is_authenticated %}
+                        <p>Signed in as <strong class="name">{{ user.username }}</strong>.</p>
+                    {% else %}
+                        Not signed in.
+                    {% endif %}
+                </div>
+        </div class="nav-items">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'create_listing' %}">Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'watchlist' %}">watchlist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+            {% block body %}
+            {% endblock %}  
+    </body>
+</html>
