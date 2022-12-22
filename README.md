@@ -1,1 +1,1 @@
-### Projects of *"cs50 web programming with python and javascript"* course
+### Projects of **"cs50 web programming with python and javascript"** course
